@@ -18,6 +18,10 @@ class LoggerWrapper(object):
     self._logger.info(msg)
     return
 
+  def cinfo(self, msg, color=None):
+    self._logger.info(msg, dict(color=color))
+    return
+
   def warning(self, msg):
     self._logger.warning(msg)
     return
@@ -30,9 +34,9 @@ class LoggerWrapper(object):
     self._logger.critical(msg, exc_info=exc_info)
     return
 
-  def success(self, msg, color='success'):
+  def success(self, msg):
     """
     Works only if log.custom_fornatters.ColoredFormatter is employed as a formatter for self._logger
     """
-    self._logger.info(msg, dict(color=color))
+    self._logger.info(msg, dict(color='success'))
     return
