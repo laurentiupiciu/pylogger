@@ -4,7 +4,7 @@
 
   "formatters" : {
     "colored" : {
-      "class" : "log.custom_formatters.ColoredFormatter",
+      "class" : "pylogger.custom_formatters.ColoredFormatter",
       "format" : "%(asctime)s — [%(name)s] — %(levelname)-8s — %(message)s"
     },
 
@@ -32,7 +32,7 @@
   },
 
   "loggers" : {
-    "data_analysis" : {
+    "std" : {
       "handlers" : ["console", "file"],
       "level" : "DEBUG",
       "propagate" : false
