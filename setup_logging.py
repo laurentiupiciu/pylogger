@@ -10,11 +10,13 @@ def setup_filename_for_handlers(cfg):
   """
   LOGS_DIR = '_logs'
   session_id = dt.now().strftime('%Y%m%d_%H%M%S_%f')
-  os.makedirs(LOGS_DIR, exist_ok=True)
 
   for handler_name, handler_cfg in cfg['handlers'].items():
-    if handler_cfg.get('filename') == '{}':
-      handler_cfg['filename'] = handler_cfg['filename'].format('{}/{}.log'.format(LOGS_DIR, session_id))
+    filename = handler_cfg.get('filename')
+    if filename is not None:
+      os.makedirs(LOGS_DIR, exist_ok=True)
+      if filename == '{}':
+        handler_cfg['filename'] = handler_cfg['filename'].format('{}/{}.log'.format(LOGS_DIR, session_id))
 
   return session_id
 
