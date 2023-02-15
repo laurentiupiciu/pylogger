@@ -5,9 +5,13 @@ class LoggerWrapper(object):
   Wrapper over one logger defined in the configuration file.
   If multiple loggers are defined in the configuration file, then multiple wrappers should be created.
   """
-  def __init__(self, lib_name, session_id=None):
+  def __init__(self, logger=None, lib_name=None, session_id=None):
     super(LoggerWrapper, self).__init__()
-    self._logger = logging.getLogger(lib_name)
+    if logger is not None:
+      self._logger = logger
+    else:
+      assert lib_name is not None
+      self._logger = logging.getLogger(lib_name)
     self.session_id = session_id
     return
 
