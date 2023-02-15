@@ -11,6 +11,10 @@ class LoggerWrapper(object):
     self.session_id = session_id
     return
 
+  @property
+  def logger(self):
+    return self._logger
+
   def debug(self, msg):
     self._logger.debug(msg)
     return
